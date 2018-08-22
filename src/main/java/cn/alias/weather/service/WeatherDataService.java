@@ -9,6 +9,11 @@ import cn.alias.weather.vo.WeatherResponse;
  */
 public interface WeatherDataService {
     /**
+     * 根据城市id同步数据
+     * @param cityId
+     */
+    void syncDataByCityId(String cityId);
+    /**
      * 根据city ID获取天气数据
      * @param cityId
      * @return

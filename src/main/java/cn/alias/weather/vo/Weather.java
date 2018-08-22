@@ -12,9 +12,9 @@ import java.util.List;
 @Data
 public class Weather implements Serializable {
    private  String city;
-   private String api;
-   private String temperature;
-   private String cold;
+   private String aqi;
+   private String wendu;
+   private String ganmao;
    private Yesterday yesterday;
    private List<Forecast> forecast;
 }

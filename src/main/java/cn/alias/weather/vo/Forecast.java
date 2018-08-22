@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class Forecast implements Serializable{
     private String date;
     private String high;
-    private String windDirection;
-    private String windPower;
+    private String fengxiang;
+    private String fengli;
     private String low;
     private String type;
 }
