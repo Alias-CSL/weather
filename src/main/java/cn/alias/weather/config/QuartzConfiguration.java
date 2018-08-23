@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class QuartzConfiguration {
+    private final int TIME = 1800;//更新频率
     @Bean
     public JobDetail weatherDataSyncJobJobDetail() {
         JobDetail jobDetail = JobBuilder.newJob(WeatherDataSyncJob.class).withIdentity("weatherDataSyncJob").storeDurably().build();
@@ -19,7 +20,7 @@ public class QuartzConfiguration {
 
     @Bean
     public Trigger simpleJobTrigger() {
-        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2).repeatForever();
+        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(TIME).repeatForever();
         return TriggerBuilder.newTrigger()
                 .forJob(weatherDataSyncJobJobDetail())
                     .withIdentity("weatherDataSyncTrigger")

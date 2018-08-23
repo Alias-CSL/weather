@@ -21,6 +21,8 @@ import java.util.logging.Logger;
  */
 @Service
 public class WeatherDataServiceImpl implements WeatherDataService {
+
+
     org.slf4j.Logger logger = LoggerFactory.getLogger(WeatherDataServiceImpl.class);
     @Autowired
     private RestTemplate restTemplate;
@@ -28,8 +30,27 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     private StringRedisTemplate stringRedisTemplate;
 
     private final String WEATHER_API = "http://wthrcdn.etouch.cn/weather_mini";
+
     //缓存超时时间
     private final Long TIME_OUT = 1800L;
+
+    @Override
+    public void syncDataByCityId(String cityId) {
+        String uri = WEATHER_API + "?citykey=" + cityId;
+        this.saveWeatherData(uri);
+    }
+
+    private void saveWeatherData(String uri) {
+        ValueOperations<String,String> ops = this.stringRedisTemplate.opsForValue();
+        String key = uri;
+        String strBody = null;
+        ResponseEntity<String> responses = restTemplate.getForEntity(uri,String.class);
+        if(responses.getStatusCodeValue() == 200) {
+            strBody = responses.getBody();
+        }
+        ops.set(key,strBody,TIME_OUT,TimeUnit.SECONDS);
+    }
+
     @Override
     public WeatherResponse getDataByCityId(String cityId) {
         String uri = WEATHER_API + "?citykey=" +cityId;
