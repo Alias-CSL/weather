@@ -30,6 +30,12 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     private final String WEATHER_API = "http://wthrcdn.etouch.cn/weather_mini";
     //缓存超时时间
     private final Long TIME_OUT = 1800L;
+
+    @Override
+    public void syncDataByCityId(String cityId) {
+
+    }
+
     @Override
     public WeatherResponse getDataByCityId(String cityId) {
         String uri = WEATHER_API + "?citykey=" +cityId;
