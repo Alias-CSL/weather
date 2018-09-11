@@ -6,6 +6,6 @@ spring:
     port: 6379
     password: 123456
     host: 123.207.64.43
-    timeout: 10000
+    timeout: 100000
   thymeleaf:
     cache: false
