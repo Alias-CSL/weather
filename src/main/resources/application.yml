@@ -9,8 +9,4 @@ spring:
     timeout: 100000
   thymeleaf:
     cache: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+
