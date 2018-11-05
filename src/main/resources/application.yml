@@ -4,7 +4,12 @@ server:
 spring:
   redis:
     port: 6379
-    password: 123456
+    password: 8999958...***
     host: 123.207.64.43
   thymeleaf:
     cache: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
