@@ -14,7 +14,7 @@ public class WeatherApplicationTests {
     @Test
     public void contextLoads() {
         Jedis jedis = new Jedis("123.207.64.43",6379,132465);
-        jedis.auth("123456");
+        jedis.auth("8999958...***");
         jedis.set("key1212","value");
     }
 
